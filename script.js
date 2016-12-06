@@ -24,6 +24,14 @@ submitBtn.addEventListener('click', function () {
 //clears the user inputs
 clearBtn.addEventListener('click', function() {
   var userGuess = document.getElementById ('user-guess');
+
+  userGuess.value = "";
+})
+
+//Reset Button...this will clear the random number
+resetBtn.addEventListener('click', function() {
+  randomNum = Math.floor(Math.random() *100 +1);
+  var userGuess = document.getElementById ('user-guess');
   var lastGuess = document.querySelector('.prev-guess');
 
   userGuess.value = "";
