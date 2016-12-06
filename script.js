@@ -1,31 +1,34 @@
-var userGuess = document.getElementById('user-guess')
 var submitBtn = document.getElementById('submit-btn')
 var clearBtn = document.getElementById('clear-btn')
 var resetBtn = document.getElementById('reset-btn')
-var previousGuess = document.querySelector('.prev-guess')
-var randomNum = Math.floor(Math.random() * 100 + 1);
+var randomNum = Math.floor(Math.random() *100 +1)
 
-
-// Displays the users last guess
+//compares random number to user input
+//displays last guess to p tag
 submitBtn.addEventListener('click', function () {
+  var userGuess = document.getElementById ('user-guess');
   var parse = parseInt(userGuess.value);
-  previousGuess.innerText = userGuess.value;
+  var lastGuess = document.querySelector('.prev-guess');
+  lastGuess.innerText = userGuess.value;
 
   if (randomNum === parse) {
-    console.log("Congrats!  You guessed the correct number!", randomNum);
+      console.log("Good job!", randomNum);
+    } else if (randomNum < parse) {
+      console.log("Too high", randomNum);
+    } else {
+      console.log("Too low", randomNum);
     }
-    else if (randomNum < parse){
-    console.log("You guessed too low...Try again", randomNum);
-    }
-    else {
-    console.log("Your guess was too high.", randomNum);
   }
-}
-
 )
 
 //clears the user inputs
+clearBtn.addEventListener('click', function() {
+  var userGuess = document.getElementById ('user-guess');
+  var lastGuess = document.querySelector('.prev-guess');
 
+  userGuess.value = "";
+  lastGuess.innerText = "";
+})
 
 
 
