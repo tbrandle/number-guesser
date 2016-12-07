@@ -5,8 +5,6 @@ var randomNum = Math.floor(Math.random() * 100 +1)
 var userGuess = document.getElementById('user-guess')
 var lastGuess = document.querySelector('.last-guess')
 
-
-
 submitBtn.addEventListener('click', function(){
   var parse = parseInt(userGuess.value)
   var lgText = document.querySelector('.lg-text')
@@ -19,7 +17,7 @@ submitBtn.addEventListener('click', function(){
     result.innerText = msg;
   }
   //Sets specifications for user input, compares random number to user input
-  if (parse < 1 || parse > 100) {
+  if (parse < 1 || parse > 100 || isNaN(parse) === true) { //<---isNaN(parse) is saying "parse is NaN"...that statement is equal to "true"
     alert("You must choose a number between 1-100");
     userGuess.value = "";
   } else if (parse === randomNum) {
@@ -27,10 +25,8 @@ submitBtn.addEventListener('click', function(){
     randomNum = Math.floor(Math.random() * 100 +1)
   } else if (parse < randomNum){
     guessDisplay ("That is too low")
-    console.log(randomNum)
   } else {
     guessDisplay ("That is too high")
-    console.log(randomNum)
   }
 })
 
