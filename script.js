@@ -5,6 +5,9 @@ var randomNum = Math.floor(Math.random() * 100 +1)
 var userGuess = document.getElementById('user-guess')
 var lastGuess = document.querySelector('.last-guess')
 
+var min = document.getElementById('min')
+var min = document.getElementById('max')
+
 submitBtn.addEventListener('click', function(){
   var parse = parseInt(userGuess.value)
   var lgText = document.querySelector('.lg-text')
