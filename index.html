@@ -2,30 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Number Guesser</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
-    <header>
-      <h1 class="title">Number Guesser</h1>
-    </header>
-    <section>
-      <input id="user-guess" type="number" name="user-guess">
-      <button id="submit-btn">Submit Guess</button>
-      <button id="clear-btn">Clear</button>
-    </section>
-    <section>
-      <p>
-        Your guess last guess was:
-      </p>
-      <p class="prev-guess">
+    <h1>Number Guesser</h1>
+    <input id="user-guess" type="number" name="user-guess">
+    <button id="submit-btn" type="button" name="submit-btn">Submit Guess</button>
+    <button id="clear-btn" type="button" name="clear-btn">Clear</button>
+    <div>
+      <p class="lg-text"></p>
+      <p class="last-guess"></p>
+      <p class="result"></p>
+      <button id="reset-btn" type="button" name="reset-btn">Reset</button>
 
-      </p>
-<!-- Need to somehow include the last user guess here -->
-      <button id="reset-btn">Reset Game</button>
-    </section>
+    </div>
+    <script type="text/javascript" src="script.js">
 
-    <script src="script.js"></script>
+</script>
   </body>
 </html>
