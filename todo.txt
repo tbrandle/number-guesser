@@ -1,6 +1,5 @@
 TO DO:
-- Add additional inputs that allow the user to specify the minimum/maximum range. <----- return Math.random() * (max - min) + min;
-- Upon successful win, user’s range is updated:
+- Upon successful win, user’s range is updated.
 - Every time the user wins a round increase the maximum number by 10.
 - Every time the user wins a round decrease the minimum number by 10.
 - Appropriate UI is incorporated such that user understands what is happening.

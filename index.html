@@ -5,28 +5,34 @@
     <title>Number Guesser</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
   </head>
   <body>
     <header>
-      <h1>Number <span>Guesser</span></h1>
+      <h1>Number<span>Guesser</span></h1>
     </header>
-    <div>
-      <input id="min" type="number" name="min">
-      <input id="max" type="number" name="max">
-      <button id="param-btn"type="button" name="param-btn">Enter</button>
+    <section class="section-1">
+      <input id="min" type="number" name="min" placeholder="Min">
+      <input id="max" type="number" name="max" placeholder="Max"></br>
+      <button id="param-btn" type="button" name="param-btn">Enter</button>
+    </section>
+    <div class="">
+      <p class="instructions"></p>
     </div>
-    <div>
-      <input id="user-guess" type="text" name="user-guess">
+    <section>
+      <input id="user-guess" type="text" name="user-guess" placeholder="Enter guess here">
       <button id="submit-btn" type="button" name="submit-btn">Submit Guess</button>
       <button id="clear-btn" type="button" name="clear-btn">Clear</button>
-    </div>
-
-    <div>
-      <p class="lg-text"></p>
-      <p class="last-guess"></p>
-      <p class="result"></p>
+      <div class="result-div">
+        <p class="lg-text"></p>
+        <p class="last-guess"></p>
+        <p class="result"></p>
+      </div>
       <button id="reset-btn" type="button" name="reset-btn">Reset</button>
-    </div>
+    </section>
+
+
+
     <script type="text/javascript" src="script.js">
 
 </script>
