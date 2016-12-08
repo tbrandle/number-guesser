@@ -49,7 +49,7 @@ function disableBtn(btn1, btn2, btn3, btn4) {
     btn4.disabled = true;
   }
 }
-disableBtn(submitBtn, clearBtn, resetBtn)
+disableBtn(clearBtn, resetBtn)
 
 //resets values and user inputs
 function eraseInput(var1, var2, var3){
@@ -92,8 +92,8 @@ paramBtn.addEventListener('click', function(){
   parseMin = parseInt(min.value)
   parseMax = parseInt(max.value)
   randomNum = Math.floor(Math.random() * (parseMax - parseMin) + parseMin)
-  disableBtn(min, max)
-  enableBtn(resetBtn)
+  disableBtn(min, max, paramBtn)
+  enableBtn(resetBtn, submitBtn)
   console.log("MinNumber: " + parseMin + ",", "MaxNumber: " + parseMax + ",", "RandomNumber: " + randomNum)
 })
 
@@ -101,9 +101,9 @@ submitBtn.addEventListener('click', function(){
   var parseG = parseInt(userGuess.value)
   disableBtn(min, max, paramBtn)
   enableBtn(resetBtn)
+  disableBtn(clearBtn);
   if (parseG < parseMin || parseG > parseMax || isNaN(parseG) === true) {
     alert("ERROR: You must choose a number between the min and the max that you set");
-    disableBtn(clearBtn);
   } else if (parseG === randomNum) {
     guessDisplay ("BOOM! Let's increase your range to make it more difficult");
     parseMin = parseMin - 10;
