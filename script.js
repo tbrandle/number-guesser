@@ -52,7 +52,6 @@ function disableBtn(btn1, btn2, btn3, btn4) {
 disableBtn(submitBtn, clearBtn, resetBtn)
 
 //resets values and user inputs
-  //submitBtn, clearBtn, resetBtn,
 function eraseInput(var1, var2, var3){
   if (var2 === undefined && var3 === undefined) {
     var1.value = "";
