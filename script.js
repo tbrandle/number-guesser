@@ -12,17 +12,50 @@ var parseMin = parseInt(min.value)
 var parseMax = parseInt(max.value)
 
 var randomNum = Math.floor(Math.random() * parseMax - parseMin)
-console.log(randomNum)
+console.log("MinNumber: " + parseMin + ",", "MaxNumber: " + parseMax + ",", "RandomNumber: " + randomNum)
 
 //*************HELPER FUNCTIONS*************//
 
-submitBtn.disabled = true
-clearBtn.disabled = true
-resetBtn.disabled = true
+  //Functions to enable/disable buttons and inputs
+function enableBtn(btn1, btn2, btn3, btn4) {
+  if (btn2 === undefined && btn3 === undefined && btn4 === undefined) {
+    btn1.disabled = false;
+  } else if (btn3 === undefined && btn4 === undefined){
+    btn1.disabled = false;
+    btn2.disabled = false;
+  } else if (btn4 === undefined){
+    btn1.disabled = false;
+    btn2.disabled = false;
+    btn3.disabled = false;
+  } else {
+    btn1.disabled = false;
+    btn2.disabled = false;
+    btn3.disabled = false;
+    btn4.disabled = false;
+  }
+}
+function disableBtn(btn1, btn2, btn3, btn4) {
+  if (btn2 === undefined && btn3 === undefined && btn4 === undefined) {
+    btn1.disabled = true;
+  } else if (btn3 === undefined && btn4 === undefined){
+    btn1.disabled = true;
+    btn2.disabled = true;
+  } else if (btn4 === undefined){
+    btn1.disabled = true;
+    btn2.disabled = true;
+    btn3.disabled = true;
+  } else {
+    btn1.disabled = true;
+    btn2.disabled = true;
+    btn3.disabled = true;
+    btn4.disabled = true;
+  }
+}
+disableBtn(submitBtn, clearBtn, resetBtn)
 
 //resets values and user inputs
   //submitBtn, clearBtn, resetBtn,
-function eraseInput (var1, var2, var3){
+function eraseInput(var1, var2, var3){
   if (var2 === undefined && var3 === undefined) {
     var1.value = "";
   } else if (var3 === undefined){
@@ -48,7 +81,7 @@ function eraseText (var1, var2, var3){
   }
 }
 
-//displays last guess to p tag
+  //displays last guess to p tag
 function guessDisplay (msg) {
   var lgText = document.querySelector('.lg-text')
   var result = document.querySelector('.result')
@@ -58,30 +91,24 @@ function guessDisplay (msg) {
 }
 //*************ADD EVENT LISTENERS*************//
 
-    // "Enter" button for min and max
+  // "Enter" button for min and max
 paramBtn.addEventListener('click', function(){
   parseMin = parseInt(min.value)
   parseMax = parseInt(max.value)
-
-  console.log(parseMax, parseMin)
   randomNum = Math.floor(Math.random() * (parseMax - parseMin) + parseMin)
-  min.disabled = true
-  max.disabled = true
-  resetBtn.disabled = false
-  console.log(randomNum);
+  disableBtn(min, max)
+  enableBtn(resetBtn)
+  console.log("MinNumber: " + parseMin + ",", "MaxNumber: " + parseMax + ",", "RandomNumber: " + randomNum)
 })
 
 submitBtn.addEventListener('click', function(){
   var parseG = parseInt(userGuess.value)
-  min.disabled = true
-  max.disabled = true
-  paramBtn.disabled = true
-  resetBtn.disabled = false
+  disableBtn(min, max, paramBtn)
+  enableBtn(resetBtn)
   //Sets specifications for user input, compares random number to user input
-  if (parseG < parseMin || parseG > parseMax || isNaN(parseG) === true) { //<---isNaN(parse) is saying "parseG is NaN"...that statement is equal to "true"
+  if (parseG < parseMin || parseG > parseMax || isNaN(parseG) === true) {
     alert("ERROR: You must choose a number between the min and the max that you set");
-    eraseInput(userGuess);
-    clearBtn.disabled = true
+    disableBtn(clearBtn);
   } else if (parseG === randomNum) {
     guessDisplay ("BOOM! Let's increase your range to make it more difficult");
     parseMin = parseMin - 10;
@@ -89,41 +116,35 @@ submitBtn.addEventListener('click', function(){
     randomNum = Math.floor((Math.random() * (parseMax - parseMin)) + parseMin);
     min.value = parseMin;
     max.value = parseMax;
+    console.log("MinNumber: " + parseMin + ",", "MaxNumber: " + parseMax + ",", "RandomNumber: " + randomNum)
   } else if (parseG < randomNum){
-    guessDisplay ("That is too low")
+    guessDisplay ("That is too low");
   } else {
-    guessDisplay ("That is too high")
+    guessDisplay ("That is too high");
   }
-  console.log(randomNum, parseMin, parseMax)
+  eraseInput(userGuess);
 })
 
 userGuess.addEventListener('input', function(){
   if (userGuess.value === "") {
-    clearBtn.disabled = true
-    submitBtn.disabled = true
+    disableBtn(clearBtn, submitBtn)
   } else {
-    clearBtn.disabled = false
-    submitBtn.disabled = false
+    enableBtn(clearBtn, submitBtn)
   }
 })
 
 clearBtn.addEventListener('click', function(){
   eraseInput(userGuess)
-  clearBtn.disabled = true
-  // swtchBtnOff(clearBtn)
+  disableBtn(clearBtn)
 })
 
 resetBtn.addEventListener('click', function () {
   var lgText = document.querySelector('.lg-text')
   var result = document.querySelector('.result')
-  min.disabled = false;
-  max.disabled = false;
+  enableBtn(min, max, paramBtn)
+  disableBtn(submitBtn, clearBtn, resetBtn)
   eraseInput(userGuess, min, max)
-  eraseText(lastGuess, lgText)
-  result.innerText = ""
-  submitBtn.disabled = true
-  clearBtn.disabled = true
-  resetBtn.disabled = true
-  paramBtn.disabled = false
+  eraseText(lastGuess, lgText, result)
+  lastGuess.innerText = "#"
   randomNum = Math.floor(Math.random() * (parseMax - parseMin) + parseMin)
 })
