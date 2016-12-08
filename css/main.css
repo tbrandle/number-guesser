@@ -3,9 +3,11 @@ body{
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
+
 /**********************
       HEADER STYLE
 **********************/
+
 header {
   background-color: #404041;
   color: #ed458b;
@@ -19,32 +21,10 @@ span {
   color: #e6e7e8;
   font-weight: 300;
 }
+
 /**********************
-      SECTION DIV STYLE
+   SECTION CONTENT
 **********************/
-p {
-  color: #404041;
-  margin : 0;
-}
-
-.lg-text {
-  padding-top: 15px;
-  display: block;
-  height: 18px;
-}
-
-.result {
-  display: block;
-  padding-bottom: 15px;
-  height: 18px;
-}
-
-.last-guess {
-  font-size: 11em;
-  color: #ed458b;
-  height: 215px;
-  width: 33%;
-}
 
 .section-1{
   padding: 10px 0 5px;
@@ -59,18 +39,43 @@ p {
   padding: 6px 37px;
 }
 
-/**********************
-      INPUT STYLE
-**********************/
-input {
-  text-align: center;
+p {
+  color: #404041;
+  margin : 0;
 }
 
+.lg-text {
+  padding-top: 15px;
+  display: block;
+  height: 18px;
+}
+
+.last-guess {
+  font-size: 11em;
+  color: #ed458b;
+  height: 215px;
+  width: 33%;
+}
+
+.result {
+  display: block;
+  padding-bottom: 15px;
+  height: 18px;
+}
+
+/**********************
+    USER INPUT STYLE
+**********************/
 #user-guess {
   display: block;
   margin: 20px auto;
   width: 30%;
   min-width: 150px;
+  padding: 5px 10px;
+}
+
+#min, #max {
+  width: 67px;
   padding: 5px 10px;
 }
 
@@ -83,14 +88,18 @@ input {
   margin: 2px 7px;
 }
 
-#min, #max {
-  width: 67px;
-  padding: 5px 10px;
+input {
+  text-align: center;
 }
 
 /**********************
       BUTTON STYLE
 **********************/
+
+#param-btn, #reset-btn{
+  display: block;
+  margin: 10px auto;
+}
 
 button{
   border-radius: 25px;
@@ -98,6 +107,7 @@ button{
   padding: 8px 50px;
   color: #fff;
   background-color: #929497;
+  max-width: 300px;
 }
 
 button:disabled {
@@ -109,12 +119,9 @@ button:hover:enabled {
   cursor: pointer;
 }
 
-#param-btn, #reset-btn{
-  display: block;
-  margin: 10px auto;
-}
-
-
+/**********************
+      MEDIA QUERIES
+**********************/
 
 @media screen and (max-width:500px) {
   #submit-btn, #clear-btn {
