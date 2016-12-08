@@ -5,99 +5,124 @@ var resetBtn = document.getElementById('reset-btn')
 var paramBtn = document.getElementById('param-btn')
 var userGuess = document.getElementById('user-guess')
 var lastGuess = document.querySelector('.last-guess')
-var randomNum = Math.floor((Math.random() * (maxFn() - minFn())) + minFn())
+
+var min = document.getElementById('min')
+var max = document.getElementById('max')
+
+var parseMin = parseInt(min.value)
+var parseMax = parseInt(max.value)
+var randomNum = Math.floor(Math.random() * parseMax - parseMin)
+
 
 //*************HELPER FUNCTIONS*************//
 
-//Set min and maxFn values and convert to integer
-  //global, paramBtn, resetBtn
-function minFn() {
-var min = document.getElementById('min').value
-return parseInt(min)
-}
-function maxFn() {
-var max = document.getElementById('max').value
-return parseInt(max)
-}
-
-//disables buttons
-  //userGuess, clearBtn, resetBtn
-function swtchBtn (val1, val2){
-  clearBtn.disabled = val1;
-  resetBtn.disabled = val2;
-}
-swtchBtn(true, true)
+submitBtn.disabled = true
+clearBtn.disabled = true
+resetBtn.disabled = true
 
 //resets values and user inputs
   //submitBtn, clearBtn, resetBtn,
 function eraseInput (var1, var2, var3){
-  var1.value = "";
-  var2.value = "";
-  var3.value = "";
+  if (var2 === undefined && var3 === undefined) {
+    var1.value = "";
+  } else if (var3 === undefined){
+    var1.value = "";
+    var2.value = "";
+  } else {
+    var1.value = "";
+    var2.value = "";
+    var3.value = "";
+  }
 }
+
 function eraseText (var1, var2, var3){
-  var1.innerText = "";
-  var2.innerText = "";
-  var3.innerText = "";
+  if (var2 === undefined && var3 === undefined) {
+    var1.innerText = "";
+  } else if (var3 !== undefined){
+    var1.innerText = "";
+    var2.innerText = "";
+  } else {
+    var1.innerText = "";
+    var2.innerText = "";
+    var3.innerText = "";
+  }
+}
+
+//displays last guess to p tag
+function guessDisplay (msg) {
+  var lgText = document.querySelector('.lg-text')
+  var result = document.querySelector('.result')
+  lgText.innerText = "Your last guess was:";
+  lastGuess.innerText = userGuess.value;
+  result.innerText = msg;
 }
 //*************ADD EVENT LISTENERS*************//
 
-    //"Enter" button for min and max
+    // "Enter" button for min and max
 paramBtn.addEventListener('click', function(){
-  randomNum = Math.floor((Math.random() * (maxFn() - minFn())) + minFn())
+  console.log(parseMax, parseMin)
+  randomNum = Math.floor(Math.random() * (parseMax - parseMin) + parseMin)
+  min.disabled = true
+  max.disabled = true
+  resetBtn.disabled = false
   console.log(randomNum);
 })
 
 submitBtn.addEventListener('click', function(){
   var parseG = parseInt(userGuess.value)
-  var lgText = document.querySelector('.lg-text')
-  var result = document.querySelector('.result')
-  //displays last guess to p tag
-  function guessDisplay (msg) {
-    lgText.innerText = "Your last guess was:";
-    lastGuess.innerText = userGuess.value;
-    result.innerText = msg;
-  }
+  min.disabled = true
+  max.disabled = true
+  paramBtn.disabled = true
+  resetBtn.disabled = false
+
   //Sets specifications for user input, compares random number to user input
-  if (parseG < minFn() || parseG > maxFn() || isNaN(parseG) === true) { //<---isNaN(parse) is saying "parseG is NaN"...that statement is equal to "true"
+  if (parseG < parseMin || parseG > parseMax || isNaN(parseG) === true) { //<---isNaN(parse) is saying "parseG is NaN"...that statement is equal to "true"
     alert("ERROR: You must choose a number between the min and the max that you set");
     eraseInput(userGuess);
     clearBtn.disabled = true
   } else if (parseG === randomNum) {
-    guessDisplay ("BOOM! Let's make this more diffcult.");
-    var minTen = minFn() - 10;
-    var maxTen = maxFn() + 10;
-    randomNum = Math.floor((Math.random() * (maxTen - minTen)) + minTen);
-    console.log (minTen);
-    console.log (maxTen);
-    console.log (randomNum);
+    guessDisplay ("BOOM! Let's increase your range to make it more difficult");
+    parseMin = parseMin - 10;
+    parseMax = parseMax + 10;
+    randomNum = Math.floor((Math.random() * (parseMax - parseMin)) + parseMin);
+    min.value = parseMin;
+    max.value = parseMax;
   } else if (parseG < randomNum){
     guessDisplay ("That is too low")
   } else {
     guessDisplay ("That is too high")
   }
+  console.log(randomNum, parseMin, parseMax)
 })
 
 userGuess.addEventListener('input', function(){
   if (userGuess.value === "") {
-    swtchBtn(true)
+    clearBtn.disabled = true
+    submitBtn.disabled = true
   } else {
-    swtchBtn(false)
+    clearBtn.disabled = false
+    submitBtn.disabled = false
   }
 })
 
 clearBtn.addEventListener('click', function(){
   eraseInput(userGuess)
-  swtchBtn(true)
+  clearBtn.disabled = true
+  // swtchBtnOff(clearBtn)
 })
 
 resetBtn.addEventListener('click', function () {
   var lgText = document.querySelector('.lg-text')
   var result = document.querySelector('.result')
-  var min = document.getElementById('min')
-  var max = document.getElementById('max')
+  min.disabled = false;
+  max.disabled = false;
   eraseInput(userGuess, min, max)
   eraseText(lastGuess, lgText, result)
-  swtchBtn(true, true)
-  randomNum = Math.floor((Math.random() * (maxFn() - minFn())) + minFn())
+  // swtchBtnOff(submitBtn, clearBtn, resetBtn)
+  submitBtn.disabled = true
+  clearBtn.disabled = true
+  resetBtn.disabled = true
+  // swtchBtnOn(paramBtn, min, max)
+  paramBtn.disabled = false
+  randomNum = Math.floor(Math.random() * (parseMax - parseMin) + parseMin)
 })

@@ -11,23 +11,30 @@
     <header>
       <h1>Number <span>Guesser</span></h1>
     </header>
-    <section class="section-1">
-      <input id="min" type="number" name="min" placeholder="Min">
-      <input id="max" type="number" name="max" placeholder="Max"></br>
-      <button id="param-btn" type="button" name="param-btn">Enter</button>
-    </section>
-    <div class="">
+    <!-- <div class="">
       <p class="instructions"></p>
-    </div>
+    </div> -->
     <section>
-      <input id="user-guess" type="text" name="user-guess" placeholder="Enter guess here">
-      <button id="submit-btn" type="button" name="submit-btn">Submit Guess</button>
-      <button id="clear-btn" type="button" name="clear-btn">Clear</button>
-      <div class="result-div">
-        <p class="lg-text"></p>
-        <p class="last-guess"></p>
-        <p class="result"></p>
+      <div class="">
+        <input id="user-guess" type="text" name="user-guess" placeholder="Enter guess here">
+        <button id="submit-btn" type="button" name="submit-btn">Submit Guess</button>
+        <button id="clear-btn" type="button" name="clear-btn">Clear</button>
       </div>
+      <p class="lg-text"></p>
+      <div class="number">
+        <p class="last-guess"></p>
+      </div>
+      <p class="result"></p>
+      <section class="section-1">
+        <p>
+          Enter the number range:
+        </p>
+        <input id="min" type="number" name="min" placeholder="Min"> -
+        <input id="max" type="number" name="max" placeholder="Max"></br>
+        <p>Min</p>
+        <p>Max</p>
+        <button id="param-btn" type="button" name="param-btn">Enter</button>
+      </section>
       <button id="reset-btn" type="button" name="reset-btn">Reset</button>
     </section>
 
