@@ -122,7 +122,7 @@ submitBtn.addEventListener('click', function(){
 
 userGuess.addEventListener('input', function(){
   if (userGuess.value === "") {
-    disableBtn(clearBtn, submitBtn)
+    disableBtn(clearBtn)
   } else {
     enableBtn(clearBtn, submitBtn)
   }

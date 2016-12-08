@@ -73,9 +73,7 @@ p {
 #user-guess {
   display: block;
   margin: 20px auto;
-  width: 30%;
-  min-width: 150px;
-  max-width: 195px;
+  width: 170px;
   padding: 6px 1px;
 }
 
