@@ -1,3 +1,4 @@
+
 //*************GLOBAL VARIABLE*************//
 var submitBtn = document.getElementById('submit-btn')
 var clearBtn = document.getElementById('clear-btn')
@@ -5,17 +6,14 @@ var resetBtn = document.getElementById('reset-btn')
 var paramBtn = document.getElementById('param-btn')
 var userGuess = document.getElementById('user-guess')
 var lastGuess = document.querySelector('.last-guess')
-
 var min = document.getElementById('min')
 var max = document.getElementById('max')
 var parseMin = parseInt(min.value)
 var parseMax = parseInt(max.value)
-
 var randomNum = Math.floor(Math.random() * parseMax - parseMin)
 console.log("MinNumber: " + parseMin + ",", "MaxNumber: " + parseMax + ",", "RandomNumber: " + randomNum)
 
 //*************HELPER FUNCTIONS*************//
-
   //Functions to enable/disable buttons and inputs
 function enableBtn(btn1, btn2, btn3, btn4) {
   if (btn2 === undefined && btn3 === undefined && btn4 === undefined) {
@@ -67,7 +65,6 @@ function eraseInput(var1, var2, var3){
     var3.value = "";
   }
 }
-
 function eraseText (var1, var2, var3){
   if (var2 === undefined && var3 === undefined) {
     var1.innerText = "";
@@ -81,7 +78,7 @@ function eraseText (var1, var2, var3){
   }
 }
 
-  //displays last guess to p tag
+//displays last guess to p tag
 function guessDisplay (msg) {
   var lgText = document.querySelector('.lg-text')
   var result = document.querySelector('.result')
@@ -105,7 +102,6 @@ submitBtn.addEventListener('click', function(){
   var parseG = parseInt(userGuess.value)
   disableBtn(min, max, paramBtn)
   enableBtn(resetBtn)
-  //Sets specifications for user input, compares random number to user input
   if (parseG < parseMin || parseG > parseMax || isNaN(parseG) === true) {
     alert("ERROR: You must choose a number between the min and the max that you set");
     disableBtn(clearBtn);

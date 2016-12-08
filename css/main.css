@@ -26,7 +26,7 @@ span {
    SECTION CONTENT
 **********************/
 
-.section-1{
+.div-2{
   padding: 10px 0 5px;
   border: 1px black solid;
   width: 300px;
@@ -34,7 +34,7 @@ span {
   margin: auto;
 }
 
-.section-1 p{
+.div-2 p{
   display: inline-block;
   padding: 6px 37px;
 }
@@ -55,6 +55,9 @@ p {
   color: #ed458b;
   height: 215px;
   width: 33%;
+  min-width: 206px;
+  display: inline-block;
+  margin: -7px 7px 0;
 }
 
 .result {
@@ -77,15 +80,6 @@ p {
 #min, #max {
   width: 67px;
   padding: 5px 10px;
-}
-
-.number {
-  height: 215px;
-  position: relative;
-}
-.number *{
-  display: inline-block;
-  margin: 2px 7px;
 }
 
 input {
@@ -129,7 +123,7 @@ button:hover:enabled {
     display: block;
     margin: 6px auto;
   }
-  .number {
+  .last-guess {
     height: 193px;
   }
 }
